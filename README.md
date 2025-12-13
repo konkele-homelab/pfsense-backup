@@ -27,27 +27,30 @@ Retention behavior is controlled via environment variables.
 
 ## Environment Variables
 
-| Variable            | Default                             | Description |
-|---------------------|-------------------------------------|-------------|
-| SERVERS_FILE        | `/config/servers`                   | Path to file or secret containing pfSense credentials (`FQDN:USERNAME:PASSWORD`) |
-| BACKUP_DEST         | `/backup`                           | Directory where backup output is stored |
-| LOG_FILE            | `/var/log/backup.log`               | Persistent log file |
-| RETENTION_POLICY    | `gfs`                               | Retention policy: `gfs`, `fifo`, or `calendar` |
-| GFS_DAILY           | `7`                                 | Number of daily backups to keep (GFS only) |
-| GFS_WEEKLY          | `4`                                 | Number of weekly backups to keep (GFS only) |
-| GFS_MONTHLY         | `6`                                 | Number of monthly backups to keep (GFS only) |
-| FIFO_COUNT          | `14`                                | Number of backups to keep (FIFO only) |
-| CALENDAR_DAYS       | `30`                                | Number of days to keep backups (Calendar only) |
-| EMAIL_ON_SUCCESS    | `false`                             | Enable sending email on success (`true`/`false`) |
-| EMAIL_ON_FAILURE    | `false`                             | Enable sending email on failure (`true`/`false`) |
-| EMAIL_TO            | `admin@example.com`                 | Recipient of status notifications |
-| EMAIL_FROM          | `backup@example.com`                | Sender of status notifications |
-| APP_NAME            | `pfSense`                           | Application name in status notifications |
-| APP_BACKUP          | `/usr/local/bin/backup-pfsense.sh`  | Path to backup script executed by the container |
-| USER_UID            | `3000`                              | UID of backup user |
-| USER_GID            | `3000`                              | GID of backup user |
-| DRY_RUN             | `false`                             | If `true`, backup logic logs actions but does not backup or prune anything |
-| TZ                  | `America/Chicago`                   | Timezone used for timestamps |
+| Variable            | Default                                | Description |
+|----------------------|---------------------------------------|-------------|
+| APP_NAME             | `pfSense`                             | Application name in status notification |
+| APP_BACKUP           | `/usr/local/bin/backup-pfsense.sh`    | Path to backup script executed by the container |
+| PROTO                | `https`                               | Protocol to use when contacting pfSense (http/https) |
+| SECRETSEED           | `true`                                | Include secret seed in backup (tar if true, db if false) |
+| SERVERS_FILE         | `/config/servers`                     | Path to file or secret containing pfSense credentials (`FQDN:USERNAME:PASSWORD`) |
+| BACKUP_DEST          | `/backup`                             | Directory where backup output is stored |
+| DRY_RUN              | `false`                               | If `true`, logs actions but does not backup or prune anything |
+| LOG_FILE             | `/var/log/backup.log`                 | Persistent log file |
+| EMAIL_ON_SUCCESS     | `false`                               | Enable sending email when backup succeeds (`true`/`false`) |
+| EMAIL_ON_FAILURE     | `false`                               | Enable sending email when backup fails (`true`/`false`) |
+| EMAIL_TO             | `admin@example.com`                   | Recipient of status notifications |
+| EMAIL_FROM           | `backup@example.com`                  | Sender of status notifications |
+| RETENTION_POLICY     | `gfs`                                 | Retention strategy: `gfs`, `fifo`, or `calendar` |
+| GFS_DAILY            | `7`                                   | Number of daily snapshots to keep (GFS) |
+| GFS_WEEKLY           | `4`                                   | Number of weekly snapshots to keep (GFS) |
+| GFS_MONTHLY          | `6`                                   | Number of monthly snapshots to keep (GFS) |
+| FIFO_COUNT           | `14`                                  | Number of snapshots to retain (FIFO) |
+| CALENDAR_DAYS        | `30`                                  | Number of days to retain snapshots (Calendar) |
+| TZ                   | `America/Chicago`                     | Timezone used for timestamps |
+| USER_UID             | `3000`                                | UID of backup user |
+| USER_GID             | `3000`                                | GID of backup user |
+| DEBUG                | `false`                               | If `true`, keeps container running for debug purposes |
 
 ---
 
