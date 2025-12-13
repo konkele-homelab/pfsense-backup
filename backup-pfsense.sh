@@ -12,12 +12,6 @@ set -eu
 export APP_NAME
 
 # ----------------------
-# Logging helpers (from wrapper)
-# ----------------------
-log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "${RUN_LOG:-/tmp/backup_run.log}"; }
-log_error() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR: $*" | tee -a "${RUN_LOG:-/tmp/backup_run.log}" >&2; }
-
-# ----------------------
 # CSRF Extraction Helper
 # ----------------------
 extract_csrf() {
