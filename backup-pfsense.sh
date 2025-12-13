@@ -7,7 +7,6 @@ set -eu
 : "${APP_NAME:=pfSense}"
 : "${SERVERS_FILE:=/config/servers}"
 : "${PROTO:=https}"
-: "${DRY_RUN:=false}"
 : "${SNAPSHOT_DIR:?SNAPSHOT_DIR not set by wrapper}"
 
 export APP_NAME
