@@ -1,3 +1,7 @@
+# Default Arguments for Upstream Base Image
+ARG UPSTREAM_REGISTRY
+ARG UPSTREAM_TAG
+
 # Use Upstream Base Image
 FROM ${UPSTREAM_REGISTRY}/backup-base:${UPSTREAM_TAG}
 
