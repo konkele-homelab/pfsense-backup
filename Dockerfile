@@ -1,6 +1,6 @@
 # Default Arguments for Upstream Base Image
-ARG UPSTREAM_REGISTRY
-ARG UPSTREAM_TAG
+ARG UPSTREAM_REGISTRY=registry.example.com
+ARG UPSTREAM_TAG=latest
 
 # Use Upstream Base Image
 FROM ${UPSTREAM_REGISTRY}/backup-base:${UPSTREAM_TAG}
